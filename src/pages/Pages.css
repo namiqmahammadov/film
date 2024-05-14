@@ -1,0 +1,256 @@
+.search-div input{
+   
+    margin: 10px 0;
+    width: 24%;
+    font-size: 14px;
+    outline: none;
+    color: white;
+    padding: 9px 5px;
+    border-radius: 0 30px;
+    background-color: transparent;
+    text-indent: 13px;
+}
+
+.btn-search {
+    display: inline-block;
+    margin: 0 24px;
+    height: 41px;
+}
+form{
+    align-items: center;
+
+    display: flex;
+    justify-content: center;
+}
+.detail-card{
+margin:  10px auto;
+width: 20%;
+padding: 15px;
+border-radius: 0 12px;
+background: linear-gradient(148deg,rgba(1,152,255,.18) 0%,rgba(0,0,0,0) 100%);
+   color: white;
+}
+.card-all-div{
+    display: flex;
+    flex-wrap: wrap;
+}
+.card-text{
+    padding: 0px 0;
+}
+.list-ul li{
+    color: white;
+}
+p.card-text{
+    margin-bottom: 1px;
+}
+.listName{
+    color: white;
+    font-size: 32px;
+    font-weight: bold;
+    list-style: none;
+}
+.wrong{
+    margin: 99px auto;
+    width: 100%;
+    color: white;
+    text-align: center;
+}
+.liInner
+{
+    font-style: italic;
+    color: white;
+    align-items: center;
+    display: flex;
+}
+.liInner img{
+    list-style-type: none;
+margin: 10px 20px;
+    width: 110px;
+}
+
+.card {
+    margin: 16px 1.5%;
+    background: linear-gradient(148deg,rgba(1,152,255,.18) 0%,rgba(0,0,0,0) 100%);
+    width: 22%;
+    padding: 15px;
+    border-radius: 0 12px;
+    flex-direction: column;
+    justify-content: space-between;
+   
+}
+.card img{
+    height: 322px;
+    width: 100%;
+}
+.name{
+    font-style: italic ;
+    font-weight: 700;
+}
+.card h5{
+    font-weight: 500;
+    margin: 4px 0;
+}
+.second-h5{
+    padding-bottom: 10px;
+}
+.x{
+    padding-bottom: 6px;
+}
+.z{
+    display: block;
+    margin-bottom: 6px;
+
+}
+.first{
+    margin-top: 4px;
+    font-size: 19px ;
+}
+button,
+.detail{
+    text-decoration: none;
+    text-align: center;
+    color: white;
+    background: linear-gradient(75deg,blue 0%,rgb(109, 3, 109) 100%);
+    padding: 12px 26px;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    font-size: 14px;
+    align-items: center;
+    border: 0px ;
+    border-radius: 0 20px;
+   
+}
+h5{
+    color: white;
+}
+.bts{
+    margin: 5px auto;
+    width: 93%;
+    display: flex;
+    justify-content: space-between;
+}
+.list-div{
+    position: absolute;
+    right:0;
+    z-index: 9999999999999999;
+    border: 1px solid #1e004d;
+    width: 450px;
+    border-radius: 0 12px ;
+    height: 340px;
+    background-color: #060519;
+}
+.home-page{
+    position: relative;
+}
+.list-div input{
+    margin:10px auto;
+    width: 80%;
+    left: 50%;
+    color:white;
+    transform:translateX(12.5%) ;
+    background-color: transparent;
+    border-color: rgb(50, 1, 50);
+    padding: 8px 10px;
+}
+.list-div input::placeholder {
+    color: gray;
+
+    opacity: 1; /* Firefox */
+  }
+  .sweet-loading{
+    margin: 55px auto ;
+    margin-bottom: 20px;
+  }
+  .white{
+    color: white;
+    font-size: 23px;
+    font-weight: bold;
+  }
+  .inner-list-inp{
+    margin:10px auto;
+    width: 80%;
+    left: 50%;
+    border: 1px solid white;
+  }
+  .list-div li{
+    color: white;
+    list-style: none;
+    padding: 4px 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  } 
+  .wrong2{
+    font-weight: bold;
+    font-size: 24px;
+  }
+  
+  .list-div ul{
+    overflow-y: scroll;
+    height: 171px;
+    border-color: #060519;
+}
+.create-new-list{
+    width: 50%;
+    margin:14px auto;
+    border-radius:0  12px  ;
+display: block;
+
+}
+.card-text,
+.card-title{
+ color: white !important;
+}
+@media (max-width: 990px) {
+   .parent ul{
+    padding-left: 0 !important;
+   }
+   p.listName{
+    margin-left: 20px;
+   }
+   .liInner{
+    font-size: 13px;
+   }
+   
+   .card-all-div{
+    margin: 6px 10px;
+    flex-direction: column;
+   }
+   .card
+   {
+    width: 100%;
+    font-size: 16px;
+   }
+   .detail-card{
+    margin: 10px 2.5%;
+    width: 100%;
+   }
+   .card-text,
+   .card-title{
+    color: white !important;
+   }
+.srch form{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: -30px;
+
+}
+.list-div{
+    width: 100%;
+}
+.light{
+    left: -25%;
+}
+.srch form input{
+    width: 90%;
+}
+  }
+  
+  @media (max-width: 990px) {
+    .list-div{
+            margin: 1px 3%;
+            position: relative;
+            display: block;
+    }}
