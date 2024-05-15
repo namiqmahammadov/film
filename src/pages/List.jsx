@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import './Pages.css';
 import NA from '../images/NA.png';
 
@@ -8,7 +8,7 @@ const List = () => {
 
   useEffect(() => {
     getItem();
-  },[] );
+  }, []);
 
   const getItem = () => {
     const storedData = JSON.parse(localStorage.getItem('list')) || [];
@@ -25,8 +25,12 @@ const List = () => {
               <ul>
                 {item.items.map((innerItem, innerIndex) => (
                   <li className='liInner' key={innerIndex}>
-                    <img src={innerItem.Poster === 'N/A' ? NA : innerItem.Poster} alt="" />
-                    {innerItem.Title} ({innerItem.Year})
+                    <img src={innerItem.Poster === 'N/A' ? NA : innerItem.Poster} alt={innerItem.Title} />
+                    {innerItem && (
+                      <Link className='fromListToDetail' to={`https://www.imdb.com/title/${innerItem.imdbID}`}>
+                        {innerItem.Title} ({innerItem.Year})
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>

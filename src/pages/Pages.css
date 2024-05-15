@@ -254,3 +254,7 @@ display: block;
             position: relative;
             display: block;
     }}
+    .fromListToDetail{
+        color: white;
+        font-weight: bold;
+    }
