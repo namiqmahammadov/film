@@ -11,65 +11,65 @@ const Leftlist = ({ display, movie }) => {
   const [list, setList] = useState([]);
   const listToOtherPage = useSelector((state) => state.listSlice.value);
   const dispatch = useDispatch();
+
   useEffect(() => {
     if (movie && Object.keys(movie).length > 0 && !listItem.find(item => item.imdbID === movie.imdbID)) {
       setListItem(prevItems => [...prevItems, movie]);
-      // localStorage.setItem('data', JSON.stringify(list));
-      // console.log(movie)
     }
   }, [movie]);
 
   const textInpHandler = (e) => {
     setInp(e.target.value);
-    
   };
 
   const deleteListItem = (id) => {
     setListItem((prevItems) => prevItems.filter((item) => item.imdbID !== id));
-
   };
+
   useEffect(() => {
-  setListItem([])
-    }, [list]);
+    setListItem([]);
+  }, [list]);
 
+  const createNewList = async () => {
+    if (listItem.length === 0) {
+      alert('Please add at least one movie to the list!');
+      return;
+    }
 
-    const createNewList = () => {
-      if (listItem.length === 0) {
-        alert('Please add at least one movie to the list!');
-        return;
-      }
-  
-      if (inp.trim() !== '') {
-        if (listItem.length > 0) {
-          let storedData2 = JSON.parse(localStorage.getItem('list')) || [];
-          const existingList = storedData2.find(item => item.title.toUpperCase().trim() === inp.toUpperCase().trim());
-           if (existingList) {
-            alert('A list with this title already exists!');
-           return;
-          }
+    if (inp.trim() !== '') {
+      const newList = { title: inp, movies: listItem };
+      try {
+        const response = await fetch('https://acb-api.algoritmika.org/api/movies/list', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(newList),
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          // Save the new list's ID to local storage
+          let listIDs = JSON.parse(localStorage.getItem('listIDs')) || [];
+          listIDs.push(data.id);
+          localStorage.setItem('listIDs', JSON.stringify(listIDs));
+
           setListTitle(inp);
-    
-          let storedData = JSON.parse(localStorage.getItem('list')) || [] ;
-          let updatedList = [...storedData, { title: inp, items: [...listItem] }];
-          localStorage.setItem('list', JSON.stringify(updatedList));
-     
-          setList(updatedList);
-    
           setInp('');
           setListItem([]);
+          alert('List created successfully!');
         } else {
-          alert('Please add items to the list!');
-          setListItem([]);
+          alert('Failed to create list. Please try again.');
         }
-      } else {
-
-        alert('Please add a list name!');
+      } catch (error) {
+        console.error('Error creating list:', error);
+        alert('Failed to create list. Please try again.');
       }
+    } else {
+      alert('Please add a list name!');
+    }
+  };
 
-    };
-    // console.log(listItem)
-    
-  // console.log(localStorage.getItem('data'))
   return (
     <div className='list-div' style={{ display: display ? 'block' : 'none' }}>
       <input type="text" value={inp} placeholder='Please First Add List Name...' onChange={textInpHandler} />

@@ -10,9 +10,24 @@ const List = () => {
     getItem();
   }, []);
 
-  const getItem = () => {
-    const storedData = JSON.parse(localStorage.getItem('list')) || [];
-    setMyList(storedData);
+  const getItem = async () => {
+    try {
+      const listIDs = JSON.parse(localStorage.getItem('listIDs')) || [];
+
+      const fetchedLists = await Promise.all(listIDs.map(async (id) => {
+        const response = await fetch(`https://acb-api.algoritmika.org/api/movies/list/${id}`);
+        if (response.ok) {
+          return await response.json();
+        } else {
+          console.error(`Error fetching list with ID ${id}`);
+          return null;
+        }
+      }));
+
+      setMyList(fetchedLists.filter(list => list !== null));
+    } catch (error) {
+      console.error('Error fetching lists:', error);
+    }
   };
 
   return (
@@ -23,7 +38,7 @@ const List = () => {
             <li key={index}>
               <p className='listName'>{item.title}</p>
               <ul>
-                {item.items.map((innerItem, innerIndex) => (
+                {item.movies.map((innerItem, innerIndex) => (
                   <li className='liInner' key={innerIndex}>
                     <img src={innerItem.Poster === 'N/A' ? NA : innerItem.Poster} alt={innerItem.Title} />
                     {innerItem && (
